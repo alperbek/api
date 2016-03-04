@@ -30,7 +30,7 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
-    @list = List.find(params[:id])
+    @list = List.friendly.find(params[:id])
 
     if @list.update(list_params)
       head :no_content
@@ -50,7 +50,7 @@ class ListsController < ApplicationController
   private
 
     def set_list
-      @list = List.find(params[:id])
+      @list = List.friendly.find(params[:id])
     end
 
     def list_params

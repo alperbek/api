@@ -11,10 +11,16 @@ class List < ActiveRecord::Base
 		icons = ['shopping-basket','users','money']
 		modes = [:grocery , :person , :bill]
 
+		datas = [grocery,person,bill]
+
 		hash = super(options)
-		hash[:icon] = icons[mode]
-		hash[:mode] = modes[mode]
-		
+		hash[:icon]  = icons[mode]
+		hash[:mode]  = modes[mode]
+
+		if options[:template] == 'show'
+			hash[:items]  = datas[mode]
+		end
+
 		return hash
 	end
 

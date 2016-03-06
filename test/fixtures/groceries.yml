@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  item: One
-  quantity: 1
-  list_id: 
+  item: Bread
+  quantity: 2
+  list_id: 1
 
 two:
-  item: Two
-  quantity: 1
-  list_id: 
+  item: Milk
+  quantity: 3
+  list_id: 1

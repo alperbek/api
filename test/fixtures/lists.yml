@@ -1,14 +1,17 @@
 grocery:
+  id: 1
   title: Breakfast
   slug: 
   mode: 0
 
 person:
+  id: 2
   title: Party
   slug: 
   mode: 1
 
 bill:
+  id: 3
   title: Electricity
   slug:
   mode: 2

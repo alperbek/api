@@ -1,11 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+grocery:
+  title: Breakfast
+  slug: 
+  mode: 0
 
-one:
-  title: MyString
+person:
+  title: Party
   slug: 
   mode: 1
 
-two:
-  title: StringTwo
-  slug: 
-  mode: 1
+bill:
+  title: Electricity
+  slug:
+  mode: 2

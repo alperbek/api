@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ListsControllerTest < ActionController::TestCase
   setup do
-    @list = lists(:one)
+    @list = lists(:person)
   end
 
   test "should get index" do

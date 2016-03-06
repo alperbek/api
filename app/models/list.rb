@@ -6,6 +6,8 @@ class List < ActiveRecord::Base
 	has_many :person  , :dependent => :destroy
 	has_many :bill	  , :dependent => :destroy
 
+	validates :title , presence: true
+
 
 	def as_json(options = {})
 		icons = ['shopping-basket','users','money']

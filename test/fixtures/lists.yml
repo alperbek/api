@@ -2,10 +2,10 @@
 
 one:
   title: MyString
-  slug: MyString
+  slug: 
   mode: 1
 
 two:
-  title: MyString
-  slug: MyString
+  title: StringTwo
+  slug: 
   mode: 1

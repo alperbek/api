@@ -4,16 +4,14 @@ gem 'rails', '4.2.5.2'
 gem 'rails-api'
 gem 'spring', :group => :development
 gem 'sqlite3'
-
 gem 'friendly_id', '~> 5.1.0'
-
 gem 'rack-cors'
-
-# To use Mamcache solution
 gem 'dalli'
-
-# Puma for activating streaming
 gem 'puma'
+
+group :test do
+	gem 'shoulda'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  include ActionController::Live
   before_action :set_list, only: [:show, :update, :destroy]
 
   # GET /lists
@@ -12,8 +13,19 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    render json: @list
+    render json: @list 
   end
+
+  # def events
+  #   response.headers["Content-Type"] = "text/event-stream"
+  #   redis = Redis.new
+  #   redis.subscribe('item.create') do |on|
+  #       on.message do |event , data |
+  #           response.stream.write "Hello, browser! \n"
+  #       end
+  #   end
+  #   response.stream.close
+  # end
 
   # POST /lists
   # POST /lists.json
@@ -49,11 +61,11 @@ class ListsController < ApplicationController
 
   private
 
-    def set_list
-      @list = List.friendly.find(params[:id])
-    end
+  def set_list
+    @list = List.friendly.find(params[:id])
+  end
 
-    def list_params
-      params.require(:list).permit(:title, :slug, :mode)
-    end
+  def list_params
+    params.require(:list).permit(:title, :slug, :mode)
+  end
 end

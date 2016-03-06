@@ -2,9 +2,9 @@ class List < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 
-	has_many :grocery
-	has_many :person
-	has_many :bill
+	has_many :grocery , :dependent => :destroy
+	has_many :person  , :dependent => :destroy
+	has_many :bill	  , :dependent => :destroy
 
 
 	def as_json(options = {})
@@ -18,7 +18,7 @@ class List < ActiveRecord::Base
 		hash[:mode]  = modes[mode]
 
 		if options[:template] == 'show'
-			hash[:items]  = datas[mode]
+			hash[:datas]  = datas[mode]
 		end
 
 		return hash

@@ -1,28 +1,14 @@
-== README
+== HOMERUNOS
+[![Build Status](https://travis-ci.org/homerunos/api.svg?branch=master)](https://travis-ci.org/homerunos/api)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an api application to run our web and mobile apps.
 
-Things you may want to cover:
+Building using with:
+* Ruby 2.3.0
+* Sqlite3 (which is gonna change to postgresql soon)
 
-* Ruby version
+Database creation
+run <tt>rake db:create && rake db:migrate</tt>  
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Test
+run <tt>rake</tt> for all test.

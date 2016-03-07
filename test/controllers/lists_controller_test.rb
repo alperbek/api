@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ListsControllerTest < ActionController::TestCase
   setup do
-    @list = lists(:person)
+    @list = FactoryGirl.create(:list)
   end
 
   test "should get index" do
@@ -13,7 +13,7 @@ class ListsControllerTest < ActionController::TestCase
 
   test "should create list" do
     assert_difference('List.count') do
-      post :create, list: { mode: @list.mode, slug: @list.slug, title: @list.title }
+      post :create, list: { mode: @list.mode, title: "New One" }
     end
 
     assert_response 201

@@ -7,16 +7,21 @@ class ListTest < ActiveSupport::TestCase
 	should have_many(:groceries)
 
 	setup do
-		@list = lists(:grocery)
-		@grocery = groceries(:one)
+		@list = FactoryGirl.create(:list)
+		@grocery = FactoryGirl.create(:grocery)
 	end
 
 	test "should respond to grocery" do
 		assert_respond_to @list, :groceries
 	end
 
-	test "should contain only items that belongs to list" do
-		assert_equal @list , @grocery.list
-	end
+	# test "as_json should set json output to expected format" do
+	# 	@list.as_json.stubs(:json)
+	# 	@list.as_json
+
+	# 	assert "Expected format" , @list.to_json
+	# end
+
+
 
 end

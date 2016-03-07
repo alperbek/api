@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GroceriesControllerTest < ActionController::TestCase
   setup do
-    @grocery = groceries(:one)
+    @grocery = FactoryGirl.create(:grocery)
   end
 
   test "should get index" do

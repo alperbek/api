@@ -11,6 +11,12 @@ gem 'puma'
 
 group :test do
 	gem 'shoulda'
+	gem 'mocha'
+	gem 'capybara'
+end
+
+group :development, :test do
+	gem 'factory_girl_rails'
 end
 
 # To use ActiveModel has_secure_password

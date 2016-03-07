@@ -1,5 +1,6 @@
 class Grocery < ActiveRecord::Base
   belongs_to :list , touch: true
+  validates :list , presence: true
 
   #before_save :make_rotting
   #after_create :send_notification

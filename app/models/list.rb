@@ -6,7 +6,7 @@ class List < ActiveRecord::Base
 	has_many :people  , :dependent => :destroy
 	has_many :bills	  , :dependent => :destroy
 
-	validates :title , presence: true
+	validates :title , presence: true , uniqueness: true
 	validates :mode , presence: true
 
 

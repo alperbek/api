@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    render json: @list 
+    render json: @list
   end
 
   # def events

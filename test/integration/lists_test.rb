@@ -3,7 +3,8 @@ require 'test_helper'
 class ListsTest < ActionDispatch::IntegrationTest
 
 	setup do
-		@list = Factory(:list)
+		@list = FactoryGirl.create(:list)
+		@grocery = FactoryGirl.create(:grocery, list: @list)
 	end
 
 
@@ -32,6 +33,27 @@ class ListsTest < ActionDispatch::IntegrationTest
 
 	# 	assert_equal root_url , current_path
 	# end
+
+	test "return lists" do 
+		get '/lists'
+		assert_equal	200, response.status
+		refute_empty response.body
+	end
+
+	test "returns lists filtered by mode" do
+		grocery = FactoryGirl.create(:list,mode:0)
+		person  = FactoryGirl.create(:list,mode:1)
+
+		get '/lists?mode=0'
+		assert_equal 200 , response.status
+
+		lists = JSON.parse(response.body,symbolize_names: true)
+		titles = lists.collect { |z| z[:title] }
+
+		assert_includes titles, grocery.title
+		refute_includes titles, person.title
+	end
+
 
 
 end

@@ -7,6 +7,10 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
 
+    if mode = params[:mode]
+      @lists = List.where(mode: mode)
+    end
+
     render json: @lists
   end
 

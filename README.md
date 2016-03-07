@@ -1,5 +1,6 @@
-== HOMERUNOS
 [![Build Status](https://travis-ci.org/homerunos/api.svg?branch=master)](https://travis-ci.org/homerunos/api)
+
+HOMERUNOS
 
 This is an api application to run our web and mobile apps.
 

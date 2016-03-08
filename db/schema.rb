@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304232411) do
-
-  create_table "bills", force: :cascade do |t|
-    t.integer  "price"
-    t.date     "due_date"
-    t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "bills", ["list_id"], name: "index_bills_on_list_id"
+ActiveRecord::Schema.define(version: 20160304231921) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -36,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160304232411) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
-  create_table "groceries", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "item"
     t.integer  "quantity"
     t.integer  "list_id"
@@ -44,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160304232411) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "groceries", ["list_id"], name: "index_groceries_on_list_id"
+  add_index "items", ["list_id"], name: "index_items_on_list_id"
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"
@@ -55,14 +45,5 @@ ActiveRecord::Schema.define(version: 20160304232411) do
   end
 
   add_index "lists", ["slug"], name: "index_lists_on_slug", unique: true
-
-  create_table "people", force: :cascade do |t|
-    t.string   "person"
-    t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "people", ["list_id"], name: "index_people_on_list_id"
 
 end

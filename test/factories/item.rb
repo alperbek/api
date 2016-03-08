@@ -1,5 +1,5 @@
 FactoryGirl.define do
-	factory :grocery do
+	factory :item do
 		sequence(:item) { |i| "Butter#{i}" }
 		quantity 2
 		association :list 

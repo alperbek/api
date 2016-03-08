@@ -1,4 +1,4 @@
-class Grocery < ActiveRecord::Base
+class Item < ActiveRecord::Base
   belongs_to :list , touch: true
   validates :list , presence: true
 

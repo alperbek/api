@@ -13,7 +13,7 @@ class ItemsControllerTest < ActionController::TestCase
 
   test "should create item" do
     assert_difference('Item.count') do
-      post :create, item: { item: @item.item, list_id: @item.list_id, quantity: @item.quantity }
+      post :create, item: { item: @item.item, list_id: @item.list_id }
     end
 
     assert_response 201
@@ -25,7 +25,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   test "should update item" do
-    put :update, id: @item, item: { item: @item.item, list_id: @item.list_id, quantity: @item.quantity }
+    put :update, id: @item, item: { item: @item.item, list_id: @item.list_id}
     assert_response 204
   end
 

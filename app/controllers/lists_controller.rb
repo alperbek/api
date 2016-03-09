@@ -8,7 +8,7 @@ class ListsController < ApplicationController
     @lists = List.all
 
     if mode = params[:mode]
-      @lists = List.where(mode: mode)
+      @lists = @lists.where(mode: mode)
     end
 
     render json: @lists

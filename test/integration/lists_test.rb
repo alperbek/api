@@ -59,7 +59,19 @@ class ListsTest < ActionDispatch::IntegrationTest
 		post '/lists',{list: {title: nil}}
 
 		assert_equal 422, response.status
-	end
+ 	end
 
+ 	test "successful update for list" do
+ 		patch "/lists/#{@list.id}",{list: {title: 'Edited Title'}}
+
+ 		assert_equal 204, response.status
+ 		assert_equal 'Edited Title',@list.reload.title
+ 	end
+
+ 	test "unsuccessful update on short title" do
+ 		patch "/lists/#{@list.id}",{list: {title: 'short'}}
+
+ 		assert_equal 422, response.status
+ 	end
 
 end

@@ -40,19 +40,28 @@ class ListsTest < ActionDispatch::IntegrationTest
 		refute_empty response.body
 	end
 
-	# test "returns lists filtered by mode" do
-	# 	grocery = FactoryGirl.create(:list,mode:0)
-	# 	person  = FactoryGirl.create(:list,mode:1)
+	test "returns lists filtered by mode" do
+		grocery = FactoryGirl.create(:list,mode:0)
+		person  = FactoryGirl.create(:list,mode:1)
 
-	# 	get '/lists?mode=0'
-	# 	assert_equal 200 , response.status
+		get '/lists?mode=0'
+		assert_equal 200 , response.status
 
-	# 	lists = JSON.parse(response.body,symbolize_names: true)
-	# 	titles = lists.collect { |z| z[:title] }
+		lists = json(response.body)
+		titles = lists.collect { |z| z[:title] }
 
-	# 	assert_includes titles, grocery.title
-	# 	refute_includes titles, person.title
-	# end
+		assert_includes titles, grocery.title
+		refute_includes titles, person.title
+	end
+
+	test "return list by id" do
+		get "/lists/#{@list.id}"
+		assert_equal 200, response.status
+
+		list_response = json(response.body)
+		assert_equal @list.title, list_response[:title]
+
+	end
 
 
 

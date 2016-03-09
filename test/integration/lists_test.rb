@@ -47,22 +47,19 @@ class ListsTest < ActionDispatch::IntegrationTest
 		get '/lists?mode=0'
 		assert_equal 200 , response.status
 
-		lists = json(response.body)
+		lists = json(response.body	)
 		titles = lists.collect { |z| z[:title] }
 
 		assert_includes titles, grocery.title
 		refute_includes titles, person.title
 	end
 
-	test "return list by id" do
-		get "/lists/#{@list.id}"
-		assert_equal 200, response.status
 
-		list_response = json(response.body)
-		assert_equal @list.title, list_response[:title]
+	test "does not create list with title nil" do
+		post '/lists',{list: {title: nil}}
 
+		assert_equal 422, response.status
 	end
-
 
 
 end

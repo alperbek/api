@@ -74,4 +74,9 @@ class ListsTest < ActionDispatch::IntegrationTest
  		assert_equal 422, response.status
  	end
 
+ 	test "deletes existing list" do
+ 		delete "/lists/#{@list.id}"
+ 		assert_equal 204, response.status
+ 	end
+
 end

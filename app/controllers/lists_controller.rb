@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  include ActionController::Live
+  #include ActionController::Live
+  before_action :authenticate_user!
   before_action :set_list, only: [:show, :update, :destroy]
 
   # GET /lists
@@ -8,7 +9,7 @@ class ListsController < ApplicationController
     @lists = List.all
 
     if mode = params[:mode]
-      @lists = List.where(mode: mode)
+      @lists = @lists.where(mode: mode)
     end
 
     render json: @lists

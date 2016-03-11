@@ -9,6 +9,9 @@ gem 'rack-cors'
 gem 'dalli'
 gem 'puma'
 
+gem 'omniauth'
+gem 'devise_token_auth'
+
 group :test do
 	gem 'shoulda'
 	gem 'mocha'

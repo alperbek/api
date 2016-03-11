@@ -14,6 +14,10 @@ class ActiveSupport::TestCase
   	Capybara.use_default_driver
   end
 
+  def json(body)
+    JSON.parse(body,symbolize_names: true)
+  end
+
   # Add more helper methods to be used by all tests here...
   # def assert_presence(model,field)
   # 	model.valid?

@@ -40,20 +40,43 @@ class ListsTest < ActionDispatch::IntegrationTest
 		refute_empty response.body
 	end
 
-	# test "returns lists filtered by mode" do
-	# 	grocery = FactoryGirl.create(:list,mode:0)
-	# 	person  = FactoryGirl.create(:list,mode:1)
+	test "returns lists filtered by mode" do
+		grocery = FactoryGirl.create(:list,mode:0)
+		person  = FactoryGirl.create(:list,mode:1)
 
-	# 	get '/lists?mode=0'
-	# 	assert_equal 200 , response.status
+		get '/lists?mode=0'
+		assert_equal 200 , response.status
 
-	# 	lists = JSON.parse(response.body,symbolize_names: true)
-	# 	titles = lists.collect { |z| z[:title] }
+		lists = json(response.body	)
+		titles = lists.collect { |z| z[:title] }
 
-	# 	assert_includes titles, grocery.title
-	# 	refute_includes titles, person.title
-	# end
+		assert_includes titles, grocery.title
+		refute_includes titles, person.title
+	end
 
 
+	test "does not create list with title nil" do
+		post '/lists',{list: {title: nil}}
+
+		assert_equal 422, response.status
+ 	end
+
+ 	test "successful update for list" do
+ 		patch "/lists/#{@list.id}",{list: {title: 'Edited Title'}}
+
+ 		assert_equal 204, response.status
+ 		assert_equal 'Edited Title',@list.reload.title
+ 	end
+
+ 	test "unsuccessful update on short title" do
+ 		patch "/lists/#{@list.id}",{list: {title: 'short'}}
+
+ 		assert_equal 422, response.status
+ 	end
+
+ 	test "deletes existing list" do
+ 		delete "/lists/#{@list.id}"
+ 		assert_equal 204, response.status
+ 	end
 
 end

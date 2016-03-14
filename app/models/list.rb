@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
 	has_many :items , :dependent => :destroy
 
 	validates :title , presence: true , uniqueness: true
-	validates :title ,length: {minimum: 6}
+	validates :title ,length: {minimum: 4}
 	validates :mode , presence: true
 
 

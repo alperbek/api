@@ -9,14 +9,4 @@ class Item < ActiveRecord::Base
   #scope :recent , -> { order("created_at desc").limit(10) }
 
 
-
-
-  # def make_rotting
-  # 	self.completed = true if age > 20
-  # end
-
-  # def send_notification
-  # 	return 
-  # end
-
 end

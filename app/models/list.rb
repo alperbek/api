@@ -21,10 +21,6 @@ class List < ActiveRecord::Base
 
 		hash = super(options)
 		hash[:mode]  = modes[mode]
-
-		if options[:template] == 'show'
-			hash[:items]  = items
-		end
 		
 		return hash
 	end

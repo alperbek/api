@@ -15,12 +15,6 @@ class ListsController < ApplicationController
     render json: @lists
   end
 
-  # GET /lists/1
-  # GET /lists/1.json
-  def show
-    render json: @list
-  end
-
   # def events
   #   response.headers["Content-Type"] = "text/event-stream"
   #   redis = Redis.new

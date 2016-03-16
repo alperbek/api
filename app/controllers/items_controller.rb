@@ -1,12 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :get_list
   before_action :set_item, only: [:show, :update, :destroy]
 
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-
-    render json: @items
+    render json: @list.items
   end
 
   # GET /items/1
@@ -21,7 +20,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      render json: @item, status: :created, location: @item
+      render json: @item, status: :created
     else
       render json: @item.errors, status: :unprocessable_entity
     end
@@ -48,10 +47,14 @@ class ItemsController < ApplicationController
   private
 
     def set_item
-      @item = Item.find(params[:id])
+      @item = @list.items.find(params[:id])
+    end
+
+    def get_list
+      @list = List.friendly.find(params[:list_id])
     end
 
     def item_params
-      params.require(:item).permit(:item, :list_id)
+      params.require(:item).permit(:item).merge(list: @list)
     end
 end

@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
 	include DeviseTokenAuth::Concerns::User
 
 	## scopes
-	after_create :send_welcome_email
+	# after_create :send_welcome_email
+	# after_create :add_to_subscriber_list
 
-
-	def send_welcome_email
-		## TODO: write mailer
-	end
+	# def send_welcome_email
+	# 	UserMailer.welcome(self).deliver
+	# end
 
 
 end

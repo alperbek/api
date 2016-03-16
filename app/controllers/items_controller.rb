@@ -5,13 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    render json: @list.items
-  end
-
-  # GET /items/1
-  # GET /items/1.json
-  def show
-    render json: @item
+    render json: @list.as_json(:include => :items)
   end
 
   # POST /items
@@ -20,7 +14,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      render json: @item, status: :created
+      render json: [@list, @item], status: :created, location:[@list,@item]
     else
       render json: @item.errors, status: :unprocessable_entity
     end

@@ -4,7 +4,7 @@ class List < ActiveRecord::Base
 	
 	## actions
 	before_save :set_icon
-		
+
 	## relations
 	has_many :items , :dependent => :destroy
 	
@@ -14,16 +14,15 @@ class List < ActiveRecord::Base
 	validates :mode  , presence: true
 	
 	## scopes
-	scope :recent, -> { order("updated_at desc").limit(5) }
+	scope :by_user, -> (user) { where(user: user) if user.present? }
+	scope :recent,  -> { where('created_at > ?', 2.days.ago ) }
 
-	def as_json(options = {})
-		modes = [:grocery , :person , :bill]
-
-		hash = super(options)
-		hash[:mode]  = modes[mode]
-		
-		return hash
+	def as_json(options = nil )
+		super(options || { include: :items })
 	end
+
+
+	protected
 
 	def set_icon
 		icons = ['shopping-basket','users','money']

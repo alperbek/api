@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    render json: @list.as_json(:include => :items)
+    render json: @list.as_json()
   end
 
   # POST /items

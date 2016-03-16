@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   #include ActionController::Live
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :set_list, only: [:show, :update, :destroy]
 
   # GET /lists

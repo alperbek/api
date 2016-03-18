@@ -12,12 +12,11 @@ gem 'puma'
 
 gem 'omniauth'
 gem 'devise_token_auth'
-gem 'active_model_serializers'# , github: 'rails-api/active_model_serializers'
+gem 'active_model_serializers'
 
 group :test do
 	gem 'shoulda'
 	gem 'mocha'
-	gem 'capybara'
 end
 
 group :development, :test do

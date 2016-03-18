@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.1'
 
 gem 'rails', '4.2.5.2'
 gem 'rails-api'
@@ -11,6 +12,7 @@ gem 'puma'
 
 gem 'omniauth'
 gem 'devise_token_auth'
+gem 'active_model_serializers'# , github: 'rails-api/active_model_serializers'
 
 group :test do
 	gem 'shoulda'
@@ -23,9 +25,6 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'rspec-its'
 end
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
 # Deploy with Capistrano
 # gem 'capistrano', :group => :development

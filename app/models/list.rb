@@ -17,11 +17,6 @@ class List < ActiveRecord::Base
 	scope :by_user, -> (user) { where(user: user) if user.present? }
 	scope :recent,  -> { where('created_at > ?', 2.days.ago ) }
 
-	def as_json(options = nil )
-		super(options || { include: :items })
-	end
-
-
 	protected
 
 	def set_icon

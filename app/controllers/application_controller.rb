@@ -1,12 +1,10 @@
 class ApplicationController < ActionController::API
 	include DeviseTokenAuth::Concerns::SetUserByToken
+	include ActionController::Serialization
 
-	before_action :configure_permitted_parameters, if: :devise_controller?
+	ActiveModel::Serializer.root = false
+	ActiveModel::ArraySerializer.root = false
 
-	protected
 
-	def configure_permitted_parameters
-		devise_parameter_sanitizer.for(:sign_up) << :name
-	end
 
 end

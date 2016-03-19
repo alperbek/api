@@ -31,7 +31,7 @@ class V1::ListsController < V1::VersionController
         @list = List.new(list_params)
 
         if @list.save
-            render json: @list, status: :created, location: @list
+            render json: @list, status: :created
         else
             render json: @list.errors, status: :unprocessable_entity
         end

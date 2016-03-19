@@ -15,7 +15,7 @@ class V1::ItemsController < V1::VersionController
         @item = Item.new(item_params)
 
         if @item.save
-            render json: @item, status: :created, location:[@list,@item]
+            render json: @item, status: :created
         else
             render json: @item.errors, status: :unprocessable_entity
         end

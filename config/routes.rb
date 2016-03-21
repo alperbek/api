@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 		resources :lists, except: [:new, :edit, :show] do
 			resources :items, except: [:new, :edit, :show]
 		end
+
+		resources :feeds, only: [:index,:create]
 		
 	end
 

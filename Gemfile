@@ -10,6 +10,8 @@ gem 'rack-cors'
 gem 'dalli'
 gem 'puma'
 
+gem 'pusher'
+
 gem 'omniauth'
 gem 'devise_token_auth'
 gem 'active_model_serializers'

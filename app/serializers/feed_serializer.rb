@@ -4,7 +4,8 @@ class FeedSerializer < ActiveModel::Serializer
 	attributes :id,:user,:feed,:created_at
 
 	def user
-		User.find(object.user_id).name
+		user = User.find(object.user_id)
+		return { id: user.id,name: user.name }
 	end
 
 	def created_at
